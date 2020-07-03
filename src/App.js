@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Nav from "./components/Nav";
+import UsersList from "./pages/UsersList";
+
 import API from './api';
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
   return (
     <div className="App">
       <Nav>Users</Nav>
-
+      <div className="container-fluid">
+        <UsersList users={users}/>
+      </div>
     </div>
   );
 }
