@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Nav from "./components/Nav";
 import API from './api';
 
 function App() {
@@ -13,13 +14,8 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Users</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-      </nav>
+      <Nav>Users</Nav>
+
     </div>
   );
 }
