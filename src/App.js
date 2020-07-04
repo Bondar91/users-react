@@ -14,10 +14,18 @@ import API from './api';
 function App() {
   const [results, setResults] = useState(10);
   const [users, setUsers] = useState([]);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     API.get(`?results=${results}`)
-      .then(data => setUsers(data.results))
+      .then(data => {
+        setUsers(data.results);
+
+        setTimeout(() => {
+          setReady(true);
+        }, 2000)
+
+      })
       .catch(error => console.error(error));
   }, []);
 
@@ -29,7 +37,7 @@ function App() {
         <Switch>
           <Route exact path="/"
             render={ () => (
-              <UsersList users={users} />
+              <UsersList users={users} ready={ready}/>
             )}
           />
           <Route exact path="/users/:id"
