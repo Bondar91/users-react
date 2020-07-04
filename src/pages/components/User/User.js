@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  Link
+} from 'react-router-dom';
+
 import { formatDate } from '../../../utils';
 
 function User({ user }) {
@@ -28,7 +32,7 @@ function User({ user }) {
         }
       </td>
       <td>
-       fsddf
+        <Link className="btn btn-primary"  to={`/users/${user.login.uuid}`}>Szczegóły</Link>
       </td>
     </tr>
   )
