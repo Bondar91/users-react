@@ -27,7 +27,7 @@ function App() {
 
       })
       .catch(error => console.error(error));
-  }, []);
+  }, [results]);
 
   return (
     <div className="App">

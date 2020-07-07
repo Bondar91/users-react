@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { formatDate } from "../../utils";
+import UserMap from "./components/UserMap/UserMap";
 import Spinner from "../../components/Spinner";
 
 function UsersDetail({ users, ...routeProps }) {
@@ -18,7 +19,7 @@ function UsersDetail({ users, ...routeProps }) {
   }, [users])
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       {ready ? (
         user ? (
           <div className="row">
@@ -28,7 +29,7 @@ function UsersDetail({ users, ...routeProps }) {
                   <img src={user.picture?.medium} className="mr-3" alt={user.name?.last} />
                     <div className="media-body">
                       <h5 className="mt-0 mb-1"><strong>{user.name?.first} {user.name?.last}</strong></h5>
-                      <adress>
+                      <div>
                         <a href={`mailto=${user.email}`}>{user.email}</a>
                         <p className="mb-0">
                           <span className="font-weight-bold">Adres:</span>
@@ -38,13 +39,14 @@ function UsersDetail({ users, ...routeProps }) {
                           <span className="font-weight-bold">Data rejestracji:</span>
                           {user.registered && formatDate(user.registered.date)}
                         </p>
-                      </adress>
+                      </div>
                     </div>
                 </li>
               </ul>
             </div>
             <div className="col-6">
-              <h2>Mapa</h2>
+              <h2>Lokalizacja</h2>
+              <UserMap localization={user.location?.coordinates} />
             </div>
           </div>
         ) : (
